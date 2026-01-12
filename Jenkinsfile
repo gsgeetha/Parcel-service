@@ -9,9 +9,12 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh 'cd Parcel-service'
-        sh 'git checkout feature-1'
-        sh 'mvn clean install'
+        sh '''
+        
+          cd Parcel-service
+          git checkout feature-1
+          mvn clean install
+        '''
       }
     }
   }
