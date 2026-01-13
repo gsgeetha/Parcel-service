@@ -17,5 +17,12 @@ pipeline {
         '''
       }
     }
+    stage('Run App') {
+      steps {
+        timeout(time: 1, unit: 'MINUTES') {
+          sh 'java -jar target/simple-parcel-service-app-1.0-SNAPSHOT.jar'
+        }
+      }
+    }
   }
 }
