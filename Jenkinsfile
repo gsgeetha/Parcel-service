@@ -19,11 +19,7 @@ pipeline {
     stage('Run App') {
       steps {
         timeout(time: 1, unit: 'MINUTES') {
-          sh '''
-          pwd
-          ls
-            java -jar target/simple-parcel-service-app-1.0-SNAPSHOT.jar
-          '''
+          sh 'java -jar */target/simple-parcel-service-app-1.0-SNAPSHOT.jar'
         }
       }
     }
