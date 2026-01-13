@@ -10,7 +10,6 @@ pipeline {
     stage('Build') {
       steps {
         sh '''
-        
           cd Parcel-service
           git checkout feature-1
           mvn clean install
@@ -20,7 +19,11 @@ pipeline {
     stage('Run App') {
       steps {
         timeout(time: 1, unit: 'MINUTES') {
-          sh 'java -jar target/simple-parcel-service-app-1.0-SNAPSHOT.jar'
+          sh '''
+          pwd
+          ls
+            java -jar target/simple-parcel-service-app-1.0-SNAPSHOT.jar
+          '''
         }
       }
     }
