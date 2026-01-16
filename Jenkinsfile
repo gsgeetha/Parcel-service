@@ -26,7 +26,9 @@ pipeline {
 
     stage('Publish') {
       steps {
-        sh 'mvn clean deploy'
+        sh '''
+        mvn clean deploy
+        '''
       }
     }
     stage('Run App') {
