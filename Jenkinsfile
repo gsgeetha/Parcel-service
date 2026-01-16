@@ -11,7 +11,7 @@ pipeline {
     stage('Build') {
       steps {
         withCredentials([usernamePassword(
-            credentialsId: 'jfrog',
+            credentialsId: 'jfrog1',
             usernameVariable: 'JFROG_USER',
             passwordVariable: 'JFROG_API_KEY'
         )]){
