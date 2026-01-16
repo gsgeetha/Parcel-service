@@ -1,11 +1,6 @@
 pipeline {
   agent { label 'java_node' }
-
-environment {
-        JFROG_USER = credentials('jfrog1').username
-        JFROG_API_KEY = credentials('jfrog1').password
-    }
-  
+ 
   stages {
     stage('Checkout') {
       steps {
@@ -15,11 +10,17 @@ environment {
     }
     stage('Build') {
       steps {
+        withCredentials([usernamePassword(
+            credentialsId: 'jfrog',
+            usernameVariable: 'JFROG_USER',
+            passwordVariable: 'JFROG_API_KEY'
+        )]){
         sh '''
           cd Parcel-service
           git checkout feature-1
           mvn clean install
         '''
+        }
       }
     }
     // stage('Run App') {
