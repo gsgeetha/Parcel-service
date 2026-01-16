@@ -27,7 +27,9 @@ pipeline {
     stage('Publish') {
       steps {
         sh '''
-        mvn clean deploy
+          cd Parcel-service
+          git checkout feature-1
+          mvn clean deploy
         '''
       }
     }
